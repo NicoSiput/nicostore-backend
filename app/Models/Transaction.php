@@ -11,7 +11,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'uuid', 'name', 'email', 'number', 'address',
-        'transaction_total', 'trasansction_status'
+        'transaction_total', 'transaction_status'
     ];
 
     protected $hidden = [];
