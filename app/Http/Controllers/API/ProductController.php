@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function all(Request $request) {
-        
+    public function all(Request $request)
+    {
+
 
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
@@ -32,8 +33,8 @@ class ProductController extends Controller
 
         if ($slug) {
             $product = Product::with('galleries')
-            ->where('slug', $slug)
-            ->first();
+                ->where('slug', $slug)
+                ->first();
 
             if ($product) {
                 return ResponseFormatter::success($product, 'Data produk berhasil diambil');
@@ -45,10 +46,10 @@ class ProductController extends Controller
         $product = Product::with('galleries');
 
         if ($name)
-            $product->where('name', 'like', '%' . $name .'%');
-        
+            $product->where('name', 'like', '%' . $name . '%');
+
         if ($type)
-            $product->where('type', 'like', '%' . $type .'%');
+            $product->where('type', 'like', '%' . $type . '%');
 
 
         if ($price_from)
@@ -61,6 +62,5 @@ class ProductController extends Controller
             $product->paginate($limit),
             'Data List Produk Berhasil diAmbil'
         );
-
     }
 }
